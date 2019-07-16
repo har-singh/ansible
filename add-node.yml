@@ -1,0 +1,25 @@
+- name: Gather info
+  hosts: localhost
+  connection: local
+  vars_prompt:
+  - name: "F5_USERNAME"
+    prompt: "Enter F5 username"
+    private: no
+  - name: "F5_PASSWORD"
+    prompt: "Enter F5 password for F5_USERNAME"
+    private: yes
+  tasks:
+  - name: Add node
+    bigip_node:
+      host: 10.84.3.75
+      name: SVWVWS288
+      partition: DMZ-AD-NON-PROD
+      provider:
+        server: 10.95.64.61
+        user: '{{ F5_USERNAME }}'
+        password: '{{ F5_PASSWORD }}'
+        validate_certs: false
+    delegate_to: localhost
+
+
+
