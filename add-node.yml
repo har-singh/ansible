@@ -15,7 +15,7 @@
       name: SVWVWS288
       partition: DMZ-AD-NON-PROD
       provider:
-        server: 10.95.64.61
+        server: 10.95.64.106
         user: '{{ F5_USERNAME }}'
         password: '{{ F5_PASSWORD }}'
         validate_certs: false
