@@ -2,8 +2,11 @@
   hosts: localhost
   connection: local
   vars_prompt:
+  - name: "F5_USERNAME"
+    prompt: "Enter F5 username"
+    private: no
   - name: "F5_PASSWORD"
-    prompt: "Enter F5 password for admin"
+    prompt: "Enter F5 password for F5_USERNAME"
     private: yes
   tasks:
   - name: Collect BIG-IP facts
@@ -13,8 +16,8 @@
 #        - interfaces
 #        - vlans
       provider:
-        server: 10.95.64.60
-        user: admin
+        server: 10.95.64.106
+        user: '{{ F5_USERNAME }}'
         password: '{{ F5_PASSWORD }}'
         validate_certs: false
     delegate_to: localhost
