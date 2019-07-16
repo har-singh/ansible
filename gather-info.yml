@@ -1,0 +1,23 @@
+- name: Gather info
+  hosts: localhost
+  connection: local
+  vars_prompt:
+  - name: "F5_PASSWORD"
+    prompt: "Enter F5 password for admin"
+    private: yes
+  tasks:
+  - name: Collect BIG-IP facts
+    bigip_device_facts:
+      gather_subset:
+        - ssl-certs
+#        - interfaces
+#        - vlans
+      provider:
+        server: 10.95.64.60
+        user: admin
+        password: '{{ F5_PASSWORD }}'
+        validate_certs: false
+    delegate_to: localhost
+
+
+
